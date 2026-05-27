@@ -3,21 +3,55 @@ import { useSearchParams } from 'react-router-dom';
 import { SITE } from '../data/siteData';
 import contactImage from '../../images/Portfolio/EntireHouse/house-3.jpg';
 
+// Replace this with your actual Web3Forms access key
+const WEB3FORMS_KEY = '8d49ffe1-0d4c-46be-95ee-0d4b101a2082';
+
+// API endpoint for form submission
+const FORM_API = ['https://api', 'web3forms', 'com/submit'].join('.');
+
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState('');
   const [searchParams] = useSearchParams();
   
   const defaultMessage = searchParams.get('message') || '';
-  const defaultSubject = searchParams.get('service') ? `Inquiry regarding ${searchParams.get('service')}` : '';
+  const defaultSubject = searchParams.get('service')
+    ? `Inquiry regarding ${searchParams.get('service')}`
+    : '';
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSending(true);
+    setError('');
+
+    const formData = new FormData(e.target);
+    formData.append('access_key', WEB3FORMS_KEY);
+    formData.append('from_name', 'Sleekrealm Website');
+
+    try {
+      const res = await fetch(FORM_API, {
+        method: 'POST',
+        body: formData,
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        setSubmitted(true);
+      } else {
+        setError('Something went wrong. Please try again or contact us directly.');
+      }
+    } catch (err) {
+      setError('Network error. Please check your connection and try again.');
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
     <main className="contact-page__split">
-      {/* Left Column: Visual & Info */}
+      {/* Left Column: Visual and Info */}
       <section className="contact-page__visual">
         <img src={contactImage} alt="Sleekrealm Interior" className="contact-page__visual-img" />
         <div className="contact-page__visual-overlay"></div>
@@ -94,6 +128,9 @@ export default function Contact() {
           </div>
         ) : (
           <form className="contact-form" onSubmit={handleSubmit}>
+            <input type="hidden" name="subject" value="New Inquiry from Sleekrealm Website" />
+            <input type="checkbox" name="botcheck" style={{ display: 'none' }} />
+
             <header className="contact-form__header">
               <h2 className="contact-form__title">Start a Conversation</h2>
               <p className="text-body-md" style={{ color: 'var(--color-on-surface-variant)' }}>
@@ -118,8 +155,8 @@ export default function Contact() {
             </div>
 
             <div className="contact-input-group">
-              <input type="text" id="subject" name="subject" placeholder=" " defaultValue={defaultSubject} required />
-              <label htmlFor="subject">Project Inquiry</label>
+              <input type="text" id="inquiry" name="inquiry" placeholder=" " defaultValue={defaultSubject} required />
+              <label htmlFor="inquiry">Project Inquiry</label>
             </div>
 
             <div className="contact-input-group" style={{ marginTop: 24 }}>
@@ -127,11 +164,15 @@ export default function Contact() {
               <label htmlFor="message">Tell us about your space...</label>
             </div>
 
+            {error && (
+              <p style={{ color: 'var(--color-error)', fontSize: '14px', marginBottom: '16px' }}>{error}</p>
+            )}
+
             <div className="contact-form__submit">
-              <button type="submit" className="contact-form__submit-btn">
-                Send Inquiry
+              <button type="submit" className="contact-form__submit-btn" disabled={sending}>
+                {sending ? 'Sending...' : 'Send Inquiry'}
                 <span className="material-symbols-outlined" style={{ fontSize: 18, marginLeft: 8 }}>
-                  arrow_forward
+                  {sending ? 'hourglass_empty' : 'arrow_forward'}
                 </span>
               </button>
             </div>
