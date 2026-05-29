@@ -41,19 +41,28 @@ const PROJECTS = [
 
 const TESTIMONIALS = [
   {
+    quote: "This is beautiful! Well done, I knew I could trust you. Gaskiya I'm so happy I'm even teary.",
+    author: "RESIDENTIAL CLIENT"
+  },
+  {
+    quote: "You sabi your job! Thanks for changing my kitchen look, I love this new kitchen. I knew you wouldn't disappoint me.",
+    author: "BEAUTY"
+  },
+  {
     quote: "Sleekrealm transformed our penthouse into a peaceful sanctuary. The intention behind every shadow and light source is sublime.",
-    author: "ELEANOR VANCE",
-    location: "LONDON"
+    author: "ELEANOR VANCE"
   },
   {
-    quote: "Sacred Minimalism is not just a style; it's a way of living. Our home now breathes quiet luxury and absolute comfort.",
-    author: "MARCUS THORNE",
-    location: "ST. MORITZ"
+    quote: "Working with Sleekrealm was a revelation. They captured the exact essence of what I wanted, blending modern aesthetics with unparalleled comfort.",
+    author: "DAVID O."
   },
   {
-    quote: "Their eye for texture and natural stone created a kitchen that feels more like museum-grade art than utility.",
-    author: "SOPHIA LOREN",
-    location: "MILAN"
+    quote: "The attention to detail is unmatched. They turned an empty, lifeless room into a vibrant yet serene space that I never want to leave.",
+    author: "AMINA Y."
+  },
+  {
+    quote: "From the initial consultation to the final reveal, the process was seamless. The outcome is a masterpiece that perfectly balances luxury and warmth.",
+    author: "CHUKWUDI E."
   }
 ];
 
@@ -297,7 +306,7 @@ export default function Home() {
                   "{TESTIMONIALS[activeTestimonial].quote}"
                 </blockquote>
                 <cite className="home-testimonials__author text-label-caps">
-                  {TESTIMONIALS[activeTestimonial].author} <span className="home-testimonials__location">— {TESTIMONIALS[activeTestimonial].location}</span>
+                  {TESTIMONIALS[activeTestimonial].author}
                 </cite>
               </div>
 

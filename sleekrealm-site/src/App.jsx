@@ -9,6 +9,7 @@ import About from './pages/About';
 import Portfolio from './pages/Portfolio';
 import Services from './pages/Services';
 import Contact from './pages/Contact';
+import Review from './pages/Review';
 import NotFound from './pages/NotFound';
 import CaseStudySaloon from './pages/CaseStudySaloon';
 import CaseStudyVoid from './pages/CaseStudyVoid';
@@ -31,6 +32,7 @@ function App() {
             <Route path="/services" element={<Services />} />
             <Route path="/services/:id" element={<ServiceDetail />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/review" element={<Review />} />
             <Route path="/portfolio/saloon" element={<CaseStudySaloon />} />
             <Route path="/portfolio/void" element={<CaseStudyVoid />} />
             <Route path="/portfolio/entire-house" element={<CaseStudyHouse />} />
