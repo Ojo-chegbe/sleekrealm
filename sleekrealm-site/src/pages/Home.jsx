@@ -2,18 +2,18 @@ import { useRef, useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import heroImage from '../../images/Hero.jpg';
 
-import salon5 from '../../images/Portfolio/NoralinasCloset/salon-5.jpeg';
+import kicks2 from '../../images/Portfolio/HouseOfKeeks/Kicks (2).jpeg';
 import saloon2 from '../../images/Portfolio/Saloon/saloon-2.jpg';
 import void3 from '../../images/Portfolio/Void/void-3.jpg';
 import house3 from '../../images/Portfolio/EntireHouse/house-3.jpg';
 
 const PROJECTS = [
   {
-    src: salon5,
-    alt: "Noralina's Closet finished styling stations",
-    title: "NORALINA'S CLOSET",
-    category: 'COMMERCIAL SALON',
-    link: '/portfolio/noralinas-closet'
+    src: kicks2,
+    alt: 'House of Keeks - Elegant arched shelving',
+    title: 'HOUSE OF KEEKS',
+    category: 'PREMIUM SALON',
+    link: '/portfolio/house-of-keeks'
   },
   {
     src: saloon2,
@@ -77,9 +77,11 @@ export default function Home() {
   const [isDragging, setIsDragging] = useState(false);
   const dragStartX = useRef(0);
   const dragScrollLeft = useRef(0);
+  const hasDragged = useRef(false);
 
   const handleMouseDown = (e) => {
     setIsDragging(true);
+    hasDragged.current = false;
     dragStartX.current = e.pageX - scrollRef.current.offsetLeft;
     dragScrollLeft.current = scrollRef.current.scrollLeft;
   };
@@ -97,7 +99,16 @@ export default function Home() {
     e.preventDefault();
     const x = e.pageX - scrollRef.current.offsetLeft;
     const walk = (x - dragStartX.current) * 1.5; // Scroll speed multiplier
+    if (Math.abs(walk) > 5) {
+      hasDragged.current = true;
+    }
     scrollRef.current.scrollLeft = dragScrollLeft.current - walk;
+  };
+
+  const handleCardClick = (e) => {
+    if (hasDragged.current) {
+      e.preventDefault();
+    }
   };
 
   const handleTestimonialChange = useCallback((newIndex) => {
@@ -189,7 +200,7 @@ export default function Home() {
               Interior Design & Space Styling
             </span>
             <h1 className="home-hero__title animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-              Interior design in Jos for spaces that reflect beauty, comfort, personality, and peace.
+              Interior design in Jos for spaces that reflect beauty, functionality, comfort, personality, and peace.
             </h1>
 
             <div className="home-hero__actions animate-fade-in-up" style={{ animationDelay: '0.7s' }}>
@@ -219,7 +230,7 @@ export default function Home() {
               The beauty and perfection seen in the world inspire every space we
               touch. Our philosophy is rooted in Sacred Minimalism—creating
               spaces that are not merely empty, but filled with intention, light,
-              and quiet awe.
+              and quiet awe. A space can be beautiful but useless. We create beautiful functional spaces. Every piece must be useful to the client.
             </p>
           </div>
           <div className="home-philosophy__image-wrap">
@@ -258,7 +269,14 @@ export default function Home() {
           style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
         >
           {PROJECTS.map((project, i) => (
-            <Link to={project.link} className="home-works__card" key={i} style={{ textDecoration: 'none', display: 'block' }}>
+            <Link 
+              to={project.link} 
+              className="home-works__card" 
+              key={i} 
+              style={{ textDecoration: 'none', display: 'block' }}
+              onClick={handleCardClick}
+              draggable="false"
+            >
               <div className="home-works__card-image">
                 <img src={project.src} alt={project.alt} draggable="false" loading={i === 0 ? 'eager' : 'lazy'} />
               </div>

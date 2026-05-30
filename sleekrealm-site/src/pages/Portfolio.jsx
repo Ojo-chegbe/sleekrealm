@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import salon5 from '../../images/Portfolio/NoralinasCloset/salon-5.jpeg';
+import kicks2 from '../../images/Portfolio/HouseOfKeeks/Kicks (2).jpeg';
+import atelier1 from '../../images/Portfolio/HairAtelier/atelier.jpeg';
 import saloon2 from '../../images/Portfolio/Saloon/saloon-2.jpg';
 import void3 from '../../images/Portfolio/Void/void-3.jpg';
 import house3 from '../../images/Portfolio/EntireHouse/house-3.jpg';
@@ -9,13 +10,13 @@ import house3 from '../../images/Portfolio/EntireHouse/house-3.jpg';
 const PROJECTS = [
   {
     id: 1,
-    title: "Noralina's Closet",
-    category: 'Commercial Salon',
+    title: 'House of Keeks',
+    category: 'Premium Salon',
     filterCategory: 'Commercial',
-    image: salon5,
-    alt: "Noralina's Closet finished styling stations",
+    image: kicks2,
+    alt: 'House of Keeks - Elegant arched shelving and styling chairs',
     cardClass: 'portfolio-card--wide-start',
-    link: '/portfolio/noralinas-closet'
+    link: '/portfolio/house-of-keeks'
   },
   {
     id: 2,
@@ -46,6 +47,16 @@ const PROJECTS = [
     alt: 'Primary bedroom with olive green bed and marble flooring',
     cardClass: 'portfolio-card--wide-end',
     link: '/portfolio/entire-house'
+  },
+  {
+    id: 5,
+    title: 'The Hair Atelier',
+    category: 'Boutique Studio',
+    filterCategory: 'Commercial',
+    image: atelier1,
+    alt: 'The Hair Atelier - Vibrant pink lounge and styling stations',
+    cardClass: 'portfolio-card--wide-start',
+    link: '/portfolio/hair-atelier'
   }
 ];
 

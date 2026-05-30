@@ -7,7 +7,7 @@ import coverRestaurant from '../../images/Services/Resturant/resturant-2.jpg';
 import coverTV from '../../images/Services/TV/tv-2.jpg';
 import heroImage from '../../images/Hero.jpg';
 import profileImage from '../../images/Profile.jpg';
-import salonImage from '../../images/Portfolio/NoralinasCloset/salon-5.jpeg';
+import kicksImage from '../../images/Portfolio/HouseOfKeeks/Kicks (2).jpeg';
 import saloonImage from '../../images/Portfolio/Saloon/saloon-2.jpg';
 import voidImage from '../../images/Portfolio/Void/void-3.jpg';
 import houseImage from '../../images/Portfolio/EntireHouse/house-3.jpg';
@@ -241,11 +241,11 @@ export const SERVICES_DATA = [
 
 export const PROJECTS_DATA = [
   {
-    path: '/portfolio/noralinas-closet',
-    title: "Noralina's Closet Commercial Salon Interior Design",
-    description: "A raw commercial shell transformed into a bright, premium salon sanctuary by Sleekrealm Interiors in Jos.",
-    image: salonImage,
-    type: 'Commercial Salon',
+    path: '/portfolio/house-of-keeks',
+    title: 'House of Keeks Premium Salon Interior Design',
+    description: 'A bespoke commercial space featuring elegant arched shelving and a soft, graceful aesthetic by Sleekrealm Interiors in Jos.',
+    image: kicksImage,
+    type: 'Premium Salon',
   },
   {
     path: '/portfolio/saloon',

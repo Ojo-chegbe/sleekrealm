@@ -14,7 +14,8 @@ import NotFound from './pages/NotFound';
 import CaseStudySaloon from './pages/CaseStudySaloon';
 import CaseStudyVoid from './pages/CaseStudyVoid';
 import CaseStudyHouse from './pages/CaseStudyHouse';
-import CaseStudyNoralina from './pages/CaseStudyNoralina';
+import CaseStudyKeeks from './pages/CaseStudyKeeks';
+import CaseStudyAtelier from './pages/CaseStudyAtelier';
 import ServiceDetail from './pages/ServiceDetail';
 
 function App() {
@@ -36,7 +37,8 @@ function App() {
             <Route path="/portfolio/saloon" element={<CaseStudySaloon />} />
             <Route path="/portfolio/void" element={<CaseStudyVoid />} />
             <Route path="/portfolio/entire-house" element={<CaseStudyHouse />} />
-            <Route path="/portfolio/noralinas-closet" element={<CaseStudyNoralina />} />
+            <Route path="/portfolio/house-of-keeks" element={<CaseStudyKeeks />} />
+            <Route path="/portfolio/hair-atelier" element={<CaseStudyAtelier />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
